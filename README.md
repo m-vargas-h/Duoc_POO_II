@@ -13,9 +13,9 @@ Durante la primera experiencia de aprendizaje se utilizaran diversos conceptos y
 
 | Semana   | Entrega    | Descripción                                  |
 |----------|------------|----------------------------------------------|
-| Semana 1 | 18/08/2025 | Conceptos básicos de patrones de diseño simples
-| Semana 2 | 25/08/2025 | Patrones de diseño de mediana y avanzada complejidad.
-| Semana 3 | 01/09/2025 | Patrones arquitectónicos
+| Semana 1 | 18/08/2025 | Aplicando conceptos básicos de patrones de diseño simples
+| Semana 2 | 25/08/2025 | Utilizando patrones de diseño de mediana y avanzada complejidad
+| Semana 3 | 01/09/2025 | Aplicando patrones arquitectónicos a mi proyecto
 
 ### 📑 Experiencia 2: Desarrollando un producto software
 Durante la segunda experiencia de aprendizaje se establecerán mecanismos para la integración de sistemas y aseguramiento de la calidad, según el ambiente del ciclo de vida del software, donde además, se utilizaran herramientas de trabajo colaborativo en dichos procesos. Esta experiencia responde al Resultado de Aprendizaje 2: 
@@ -23,8 +23,8 @@ Durante la segunda experiencia de aprendizaje se establecerán mecanismos para l
 
 | Semana   | Entrega    | Descripción                                  |
 |----------|------------|----------------------------------------------|
-| Semana 4 | 08/09/2025 | Ambientes de Ciclo de vida de Software
-| Semana 5 | 15/09/2025 | Herramientas de trabajo colaborativo
+| Semana 4 | 08/09/2025 | Creando un ambiente de ciclo de vida de software
+| Semana 5 | 15/09/2025 | Utilizando herramientas de trabajo colaborativo
 
 ### 📈 Experiencia 3: Optimizando código con Thread
 Durante la ultima experiencia de aprendizaje se incorporaran Drivers JDBC, DriverManager y conexiones a bases de datos, donde también se busca implementar consultas (queries) y, finalmente, enlazar el programa Java con la base de datos de MySQL utilizando conector J. Esta experiencia responde al resultado de aprendizaje 3: 
@@ -32,9 +32,9 @@ Durante la ultima experiencia de aprendizaje se incorporaran Drivers JDBC, Drive
 
 | Semana   | Entrega    | Descripción                                  |
 |----------|------------|----------------------------------------------|
-| Semana 6 | 22/09/2025 | Controladores y conexiones a bases de datos
-| Semana 7 | 29/09/2025 | Interfaz gráfica y conexión a la base de datos
-| Semana 8 | 06/10/2025 | Manejando datos y aplicación de pruebas
+| Semana 6 | 22/09/2025 | Integrando controladores y conexiones a bases de datos
+| Semana 7 | 29/09/2025 | Integrando transacciones y ejecución de SQL
+| Semana 8 | 06/10/2025 | Manejando almacenamiento de datos
 
 
 ### Evaluación final transversal
