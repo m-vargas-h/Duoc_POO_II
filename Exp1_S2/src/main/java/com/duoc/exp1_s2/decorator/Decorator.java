@@ -8,6 +8,21 @@ package com.duoc.exp1_s2.decorator;
  *
  * @author mvarg
  */
-public class Decorator {
-    
+
+public abstract class Decorator implements Component {
+    protected Component componente;
+
+    public Decorator(Component componente) {
+        this.componente = componente;
+    }
+
+    @Override
+    public double getPrecio() {
+        return componente.getPrecio();
+    }
+
+    @Override
+    public String getDescripcion() {
+        return componente.getDescripcion();
+    }
 }

@@ -8,6 +8,8 @@ package com.duoc.exp1_s2.decorator;
  *
  * @author mvarg
  */
-public class Component {
-    
+
+public interface Component {
+    double getPrecio();
+    String getDescripcion();
 }

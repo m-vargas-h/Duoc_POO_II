@@ -8,6 +8,35 @@ package com.duoc.exp1_s2.decorator;
  *
  * @author mvarg
  */
-public class Product {
-    
+
+public class Product implements Component {
+    private String nombre;
+    private double precioUnitario;
+    private int cantidad;
+    private String categoria;
+
+    public Product(String nombre, double precioUnitario, int cantidad, String categoria) {
+        this.nombre = nombre;
+        this.precioUnitario = precioUnitario;
+        this.cantidad = cantidad;
+        this.categoria = categoria;
+    }
+
+    @Override
+    public double getPrecio() {
+        return precioUnitario * cantidad;
+    }
+
+    @Override
+    public String getDescripcion() {
+        return nombre + " x" + cantidad + " [" + categoria + "]";
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
 }

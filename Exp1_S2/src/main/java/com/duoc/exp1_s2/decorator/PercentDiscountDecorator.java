@@ -8,6 +8,23 @@ package com.duoc.exp1_s2.decorator;
  *
  * @author mvarg
  */
-public class PercentDiscountDecorator {
-    
+
+public class PercentDiscountDecorator extends Decorator {
+    private double porcentaje;
+
+    public PercentDiscountDecorator(Component componente, double porcentaje) {
+        super(componente);
+        this.porcentaje = porcentaje;
+    }
+
+    @Override
+    public double getPrecio() {
+        double base = componente.getPrecio();
+        return base - (base * porcentaje / 100);
+    }
+
+    @Override
+    public String getDescripcion() {
+        return componente.getDescripcion() + " (descuento fijo " + porcentaje + "%)";
+    }
 }

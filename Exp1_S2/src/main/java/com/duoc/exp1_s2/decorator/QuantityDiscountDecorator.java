@@ -8,6 +8,28 @@ package com.duoc.exp1_s2.decorator;
  *
  * @author mvarg
  */
-public class QuantityDiscountDecorator {
-    
+
+import com.duoc.exp1_s2.singleton.DiscountManager;
+
+public class QuantityDiscountDecorator extends Decorator {
+
+    public QuantityDiscountDecorator(Component componente) {
+        super(componente);
+    }
+
+    @Override
+    public double getPrecio() {
+        if (componente instanceof Product) {
+            Product producto = (Product) componente;
+            double base = producto.getPrecio();
+            double porcentaje = DiscountManager.getInstance().calculateDiscountPercentage(producto.getCantidad());
+            return base - (base * porcentaje / 100);
+        }
+        return componente.getPrecio();
+    }
+
+    @Override
+    public String getDescripcion() {
+        return componente.getDescripcion() + " (descuento por cantidad)";
+    }
 }
