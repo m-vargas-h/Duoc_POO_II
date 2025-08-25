@@ -18,23 +18,18 @@ public class ShoppingCart {
 
     public void agregarProducto(Component producto) {
         productos.add(producto);
-        System.out.println("Producto agregado: " + producto.getDescripcion());
     }
 
     public void eliminarProducto(Component producto) {
         productos.remove(producto);
-        System.out.println("Producto eliminado: " + producto.getDescripcion());
-    }
-
-    public double calcularTotal() {
-        return productos.stream()
-                        .mapToDouble(Component::getPrecio)
-                        .sum();
     }
 
     public void mostrarCarrito() {
-        System.out.println("Contenido del carrito:");
-        productos.forEach(p -> System.out.println("- " + p.getDescripcion()));
-        System.out.println("Total: $" + calcularTotal());
+        double total = 0;
+        for (Component p : productos) {
+            System.out.println("- " + p.getDescripcion());
+            total += p.getPrecio();
+        }
+        System.out.printf("Total: $%.0f\n", total);
     }
 }

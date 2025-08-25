@@ -20,7 +20,9 @@ public class Invoker {
     }
 
     public void ejecutarComandos() {
-        comandos.forEach(Command::ejecutar);
+        for (Command c : comandos) {
+            c.ejecutar();
+        }
         comandos.clear();
     }
 }

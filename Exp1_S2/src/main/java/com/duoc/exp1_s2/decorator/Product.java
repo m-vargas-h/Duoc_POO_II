@@ -22,6 +22,22 @@ public class Product implements Component {
         this.categoria = categoria;
     }
 
+    public String getNombre() { 
+        return nombre; 
+    }
+
+    public double getPrecioUnitario() { 
+        return precioUnitario; 
+    }
+
+    public int getCantidad() { 
+        return cantidad; 
+    }
+
+    public String getCategoria() { 
+        return categoria; 
+    }
+
     @Override
     public double getPrecio() {
         return precioUnitario * cantidad;
@@ -29,14 +45,6 @@ public class Product implements Component {
 
     @Override
     public String getDescripcion() {
-        return nombre + " x" + cantidad + " [" + categoria + "]";
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public String getCategoria() {
-        return categoria;
+        return nombre + " x" + cantidad + " [$" + getPrecio() + "]";
     }
 }

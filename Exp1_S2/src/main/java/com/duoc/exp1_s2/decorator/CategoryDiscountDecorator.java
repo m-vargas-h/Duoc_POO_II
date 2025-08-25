@@ -9,9 +9,11 @@ package com.duoc.exp1_s2.decorator;
  * @author mvarg
  */
 
+
 public class CategoryDiscountDecorator extends Decorator {
     private String categoriaObjetivo;
     private double porcentaje;
+    private double descuentoAplicado = 0.0;
 
     public CategoryDiscountDecorator(Component componente, String categoriaObjetivo, double porcentaje) {
         super(componente);
@@ -21,18 +23,34 @@ public class CategoryDiscountDecorator extends Decorator {
 
     @Override
     public double getPrecio() {
-        if (componente instanceof Product) {
-            Product producto = (Product) componente;
-            if (producto.getCategoria().equalsIgnoreCase(categoriaObjetivo)) {
-                double base = producto.getPrecio();
-                return base - (base * porcentaje / 100);
-            }
+        double precioOriginal = componente.getPrecio();
+        Product p = extraerProducto(componente);
+        if (p != null && p.getCategoria().equalsIgnoreCase(categoriaObjetivo)) {
+            descuentoAplicado = precioOriginal * porcentaje;
+            return precioOriginal - descuentoAplicado;
         }
-        return componente.getPrecio();
+        return precioOriginal;
     }
 
     @Override
     public String getDescripcion() {
-        return componente.getDescripcion() + " (descuento por categoría)";
+        double precioFinal = getPrecio(); // fuerza el cálculo y actualiza descuentoAplicado
+        if (descuentoAplicado > 0) {
+            return componente.getDescripcion() + String.format(" (descuento por categoría: $%.0f)", 
+                                                                descuentoAplicado);
+        }
+        return componente.getDescripcion();
     }
+
+    @Override
+    public double getDescuento() {
+        return descuentoAplicado;
+    }
+
+    private Product extraerProducto(Component c) {
+        if (c instanceof Product) return (Product) c;
+        if (c instanceof Decorator) return extraerProducto(((Decorator) c).componente);
+        return null;
+    }
+
 }

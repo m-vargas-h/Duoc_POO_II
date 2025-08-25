@@ -16,6 +16,10 @@ public abstract class Decorator implements Component {
         this.componente = componente;
     }
 
+    public double getDescuento() {
+        return 0.0; // Por defecto, sin descuento
+    }
+
     @Override
     public double getPrecio() {
         return componente.getPrecio();

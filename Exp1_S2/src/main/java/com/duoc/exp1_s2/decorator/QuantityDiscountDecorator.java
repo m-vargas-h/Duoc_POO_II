@@ -9,9 +9,9 @@ package com.duoc.exp1_s2.decorator;
  * @author mvarg
  */
 
-import com.duoc.exp1_s2.singleton.DiscountManager;
 
 public class QuantityDiscountDecorator extends Decorator {
+    private double descuentoAplicado = 0.0;
 
     public QuantityDiscountDecorator(Component componente) {
         super(componente);
@@ -19,17 +19,31 @@ public class QuantityDiscountDecorator extends Decorator {
 
     @Override
     public double getPrecio() {
+        double precioOriginal = componente.getPrecio();
         if (componente instanceof Product) {
-            Product producto = (Product) componente;
-            double base = producto.getPrecio();
-            double porcentaje = DiscountManager.getInstance().calculateDiscountPercentage(producto.getCantidad());
-            return base - (base * porcentaje / 100);
+            Product p = (Product) componente;
+            if (p.getCantidad() >= 3) {
+                descuentoAplicado = precioOriginal * 0.10;
+                return precioOriginal - descuentoAplicado;
+            }
         }
-        return componente.getPrecio();
+        return precioOriginal;
     }
 
     @Override
     public String getDescripcion() {
-        return componente.getDescripcion() + " (descuento por cantidad)";
+        double precioFinal = getPrecio(); // fuerza el cálculo y actualiza descuentoAplicado
+        if (descuentoAplicado > 0) {
+            return componente.getDescripcion() + String.format(" (descuento por cantidad: $%.0f)", 
+                                                                descuentoAplicado);
+        }
+        return componente.getDescripcion();
     }
+
+    @Override
+    public double getDescuento() {
+        return descuentoAplicado;
+    }
+
 }
+
