@@ -12,7 +12,9 @@ package com.duoc.exp1_s2.singleton;
 import java.util.Map;
 
 public class DiscountManager {
-    private static DiscountManager instance;
+    private static DiscountManager instance; // Instancia única
+
+    // Mapa de categorías y sus descuentos asociados
     private Map<String, Double> descuentosPorCategoria = Map.of(
         "Outdoor", 0.15,
         "Ropa", 0.10,
@@ -23,6 +25,7 @@ public class DiscountManager {
         
     }
 
+    // Método para obtener la instancia única
     public static DiscountManager getInstance() {
         if (instance == null) {
             instance = new DiscountManager();
@@ -30,6 +33,7 @@ public class DiscountManager {
         return instance;
     }
 
+    // Método para obtener el descuento por categoría
     public double getDescuentoCategoria(String categoria) {
         return descuentosPorCategoria.getOrDefault(categoria, 0.0);
     }

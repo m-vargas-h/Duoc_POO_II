@@ -13,10 +13,12 @@ package com.duoc.exp1_s2.decorator;
 public class QuantityDiscountDecorator extends Decorator {
     private double descuentoAplicado = 0.0;
 
+    // Constructor que recibe el componente a decorar
     public QuantityDiscountDecorator(Component componente) {
         super(componente);
     }
 
+    // Aplica un 10% de descuento si la cantidad es 3 o más
     @Override
     public double getPrecio() {
         double precioOriginal = componente.getPrecio();

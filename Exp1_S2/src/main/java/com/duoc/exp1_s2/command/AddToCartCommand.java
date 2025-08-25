@@ -16,6 +16,7 @@ public class AddToCartCommand implements Command {
     private ShoppingCart carrito;
     private Component producto;
 
+    // Constructor
     public AddToCartCommand(ShoppingCart carrito, Component producto) {
         this.carrito = carrito;
         this.producto = producto;

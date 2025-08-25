@@ -15,6 +15,7 @@ public class Product implements Component {
     private int cantidad;
     private String categoria;
 
+    //  Constructor
     public Product(String nombre, double precioUnitario, int cantidad, String categoria) {
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
@@ -45,6 +46,6 @@ public class Product implements Component {
 
     @Override
     public String getDescripcion() {
-        return nombre + " x" + cantidad + " [$" + getPrecio() + "]";
+        return nombre + " x" + cantidad + " [$" + getPrecio() + "]"; // Ejemplo: "Manzanas x3 [$3000.0]"
     }
 }

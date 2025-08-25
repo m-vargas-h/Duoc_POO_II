@@ -14,20 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
+    // Lista de productos en el carrito
     private List<Component> productos = new ArrayList<>();
 
+    // Métodos para agregar, eliminar y mostrar productos
     public void agregarProducto(Component producto) {
         productos.add(producto);
     }
 
+    // Elimina un producto del carrito
     public void eliminarProducto(Component producto) {
         productos.remove(producto);
     }
 
+    // Muestra los productos en el carrito y el total
     public void mostrarCarrito() {
         double total = 0;
         for (Component p : productos) {
-            System.out.println("- " + p.getDescripcion());
+            System.out.println("- " + p.getDescripcion()); // Muestra la descripción del producto
             total += p.getPrecio();
         }
         System.out.printf("Total: $%.0f\n", total);

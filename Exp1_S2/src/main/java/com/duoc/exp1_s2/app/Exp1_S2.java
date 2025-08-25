@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 public class Exp1_S2 {
     public static void main(String[] args) {
+        // Definición de productos
         List<Product> productos = List.of(
             new Product("Chaqueta impermeable", 45000, 1, "Outdoor"),
             new Product("Mochila trekking", 38000, 1, "Outdoor"),
@@ -31,6 +32,7 @@ public class Exp1_S2 {
         ShoppingCart carrito = new ShoppingCart();
         Invoker invoker = new Invoker();
 
+        // Bucle principal de la aplicación
         while (true) {
             System.out.println("\n------ Catálogo ------");
             for (int i = 0; i < productos.size(); i++) {
@@ -50,12 +52,14 @@ public class Exp1_S2 {
             Product base = productos.get(opcion - 1);
             Product productoFinal = new Product(base.getNombre(), base.getPrecioUnitario(), cantidad, base.getCategoria());
 
+            // Aplicar decoradores de descuento, primero cantidad, luego categoría, para que se apliquen en ese orden
             Component decorado = new CategoryDiscountDecorator(
                 new QuantityDiscountDecorator(productoFinal),
                 productoFinal.getCategoria(),
                 DiscountManager.getInstance().getDescuentoCategoria(productoFinal.getCategoria())
             );
 
+            // Agregar al carrito usando Command
             invoker.agregarComando(new AddToCartCommand(carrito, decorado));
             invoker.ejecutarComandos();
 

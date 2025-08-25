@@ -12,15 +12,17 @@ package com.duoc.exp1_s2.decorator;
 public class PercentDiscountDecorator extends Decorator {
     private double porcentaje;
 
+    // Constructor
     public PercentDiscountDecorator(Component componente, double porcentaje) {
         super(componente);
         this.porcentaje = porcentaje;
     }
 
+    // Métodos
     @Override
     public double getPrecio() {
         double base = componente.getPrecio();
-        return base - (base * porcentaje / 100);
+        return base - (base * porcentaje / 100); // Aplicar descuento porcentual
     }
 
     @Override

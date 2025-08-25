@@ -15,6 +15,7 @@ public class RemoveFromCartCommand implements Command {
     private ShoppingCart carrito;
     private Component producto;
 
+    // Constructor
     public RemoveFromCartCommand(ShoppingCart carrito, Component producto) {
         this.carrito = carrito;
         this.producto = producto;

@@ -15,10 +15,12 @@ import java.util.List;
 public class Invoker {
     private List<Command> comandos = new ArrayList<>();
 
+    // Agrega un comando a la lista
     public void agregarComando(Command comando) {
         comandos.add(comando);
     }
 
+    // Ejecuta todos los comandos en la lista y luego la limpia
     public void ejecutarComandos() {
         for (Command c : comandos) {
             c.ejecutar();
