@@ -8,6 +8,7 @@ package com.duoc.exp1_s2.command;
  *
  * @author mvarg
  */
-public class Command {
-    
+
+public interface Command {
+    void ejecutar();
 }

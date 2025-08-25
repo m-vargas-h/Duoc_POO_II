@@ -8,6 +8,20 @@ package com.duoc.exp1_s2.command;
  *
  * @author mvarg
  */
-public class AddToCartCommand {
-    
+
+import com.duoc.exp1_s2.decorator.Component;
+
+public class AddToCartCommand implements Command {
+    private ShoppingCart carrito;
+    private Component producto;
+
+    public AddToCartCommand(ShoppingCart carrito, Component producto) {
+        this.carrito = carrito;
+        this.producto = producto;
+    }
+
+    @Override
+    public void ejecutar() {
+        carrito.agregarProducto(producto);
+    }
 }

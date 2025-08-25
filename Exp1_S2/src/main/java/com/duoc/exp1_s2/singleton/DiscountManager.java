@@ -9,14 +9,17 @@ package com.duoc.exp1_s2.singleton;
  * @author mvarg
  */
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DiscountManager {
-    // Instancia única (Singleton)
     private static DiscountManager instance;
 
-    // Constructor privado
+    private Map<String, Double> descuentosPorCategoria = new HashMap<>();
+    private Map<Integer, Double> descuentosPorCantidad = new HashMap<>();
+
     private DiscountManager() { }
 
-    // Método de acceso público
     public static DiscountManager getInstance() {
         if (instance == null) {
             instance = new DiscountManager();
@@ -24,7 +27,16 @@ public class DiscountManager {
         return instance;
     }
 
-    // Lógica de descuento por cantidad
+    // Descuento por cantidad (configurable)
+    public void setDescuentoCantidad(int cantidad, double porcentaje) {
+        descuentosPorCantidad.put(cantidad, porcentaje);
+    }
+
+    public double getDescuentoCantidad(int cantidad) {
+        return descuentosPorCantidad.getOrDefault(cantidad, calculateDiscountPercentage(cantidad));
+    }
+
+    // Lógica fija como fallback
     public double calculateDiscountPercentage(int quantity) {
         if (quantity >= 10) {
             return 15.0;
@@ -35,5 +47,14 @@ public class DiscountManager {
         } else {
             return 0.0;
         }
+    }
+
+    // Descuento por categoría
+    public void setDescuentoCategoria(String categoria, double porcentaje) {
+        descuentosPorCategoria.put(categoria, porcentaje);
+    }
+
+    public double getDescuentoCategoria(String categoria) {
+        return descuentosPorCategoria.getOrDefault(categoria, 0.0);
     }
 }

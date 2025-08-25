@@ -8,6 +8,19 @@ package com.duoc.exp1_s2.command;
  *
  * @author mvarg
  */
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Invoker {
-    
+    private List<Command> comandos = new ArrayList<>();
+
+    public void agregarComando(Command comando) {
+        comandos.add(comando);
+    }
+
+    public void ejecutarComandos() {
+        comandos.forEach(Command::ejecutar);
+        comandos.clear();
+    }
 }

@@ -8,6 +8,20 @@ package com.duoc.exp1_s2.command;
  *
  * @author mvarg
  */
-public class RemoveFromCartCommand {
-    
+
+import com.duoc.exp1_s2.decorator.Component;
+
+public class RemoveFromCartCommand implements Command {
+    private ShoppingCart carrito;
+    private Component producto;
+
+    public RemoveFromCartCommand(ShoppingCart carrito, Component producto) {
+        this.carrito = carrito;
+        this.producto = producto;
+    }
+
+    @Override
+    public void ejecutar() {
+        carrito.eliminarProducto(producto);
+    }
 }
