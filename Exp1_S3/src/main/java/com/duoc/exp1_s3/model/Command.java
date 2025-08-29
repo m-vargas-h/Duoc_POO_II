@@ -8,6 +8,9 @@ package com.duoc.exp1_s3.model;
  *
  * @author mvarg
  */
-public class Command {
-    
+
+public interface Command {
+
+    // Método para ejecutar el comando
+    void execute();
 }
