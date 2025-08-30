@@ -4,10 +4,64 @@
  */
 package com.duoc.exp1_s3.controller;
 
+import com.duoc.exp1_s3.model.*;
+
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  *
  * @author mvarg
  */
+
 public class ProductController {
-    
+
+    private List<Product> productList; // Simula una base de datos
+
+    public ProductController() {
+        this.productList = new ArrayList<>();
+        seedProducts(); // Carga inicial
+    }
+
+    // Cargar productos de ejemplo
+    private void seedProducts() {
+        productList.add(new Product("P001", "Shirt", "Clothing", 10000, 15));
+        productList.add(new Product("P002", "Sneakers", "Shoes", 50000, 8));
+        productList.add(new Product("P003", "Jacket", "Clothing", 30000, 5));
+    }
+
+    public List<Product> getAllProducts() {
+        return productList;
+    }
+
+    // Obtener producto por ID
+    public Product getProductById(String id) {
+        return productList.stream()
+                .filter(p -> p.getId().equalsIgnoreCase(id))
+                .findFirst()
+                .orElse(null);
+    }
+
+    // Verificar disponibilidad
+    public boolean isAvailable(String productId, int quantity) {
+        Product product = getProductById(productId);
+        return product != null && product.isAvailable(quantity);
+    }
+
+    // Aplicar descuentos y obtener producto con precio final
+    public Component getDiscountedProduct(String productId, User user) {
+        Product product = getProductById(productId);
+        if (product == null) return null;
+
+        DiscountManager dm = DiscountManager.getInstance();
+        return dm.applyDiscounts(product, user);
+    }
+
+    // Reducir stock después de una compra
+    public void reduceStock(String productId, int quantity) {
+        Product product = getProductById(productId);
+        if (product != null) {
+            product.reduceStock(quantity);
+        }
+    }
 }

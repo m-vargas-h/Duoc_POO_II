@@ -4,10 +4,29 @@
  */
 package com.duoc.exp1_s3.controller;
 
+import com.duoc.exp1_s3.model.*;
+
 /**
  *
  * @author mvarg
  */
-public class RemoveFromCartCommand {
-    
+
+
+public class RemoveFromCartCommand implements Command {
+
+    private OrderController orderController;    // Controlador de órdenes
+    private Product product;                    // Producto a remover
+
+    // Constructor
+    public RemoveFromCartCommand(OrderController orderController, Product product) {
+        this.orderController = orderController;
+        this.product = product;
+    }
+
+    // Ejecuta el comando para remover del carrito
+    @Override
+    public void execute() {
+        orderController.removeProduct(product);
+        System.out.println(product.getName() + " removido del carrito.");
+    }
 }
