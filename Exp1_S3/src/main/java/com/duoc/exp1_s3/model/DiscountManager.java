@@ -62,4 +62,12 @@ public class DiscountManager {
 
         return base;
     }
+
+    public Map<String, Double> getUserTypeDiscounts() {
+        return userTypeDiscounts;
+    }
+
+    public Map<String, Double> getCategoryDiscounts() {
+        return categoryDiscounts;
+    }
 }
