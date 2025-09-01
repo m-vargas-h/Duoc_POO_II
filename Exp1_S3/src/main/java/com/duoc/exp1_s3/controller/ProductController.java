@@ -25,9 +25,9 @@ public class ProductController {
 
     // Cargar productos de ejemplo
     private void seedProducts() {
-        productList.add(new Product("P001", "Shirt", "Clothing", 10000, 15));
-        productList.add(new Product("P002", "Sneakers", "Shoes", 50000, 8));
-        productList.add(new Product("P003", "Jacket", "Clothing", 30000, 5));
+        productList.add(new Product("P001", "Camisa manga corta", "Ropa", 14980, 15));
+        productList.add(new Product("P002", "Zapato Trekking", "Calzado", 95990, 8));
+        productList.add(new Product("P003", "Cortavientos impermeable", "Ropa", 56790, 5));
     }
 
     public List<Product> getAllProducts() {
