@@ -15,6 +15,7 @@ Este proyecto implementa un sistema de compras modular y extensible, desarrollad
 ## Patrones de diseño utilizados
 | Patron    | Implementación destacada                                                                  |
 |-----------|-------------------------------------------------------------------------------------------|
+| MVC       | Separación clara entre modelo (`User`, `Product`, `Order`), vistas (`ProductView`, `CartView`) y controladores (`UserController`, `MenuController`, etc.). Cada capa cumple su rol sin mezclar responsabilidades.          |
 | Singleton | `DiscountManager` centraliza y gestiona descuentos globales.                              |
 | Decorator | `UserTypeDiscountDecorator` y `CategoryDiscountDecorator` aplican descuentos acumulativos.|
 | Command   | `AddToCartCommand` y `RemoveFromCartCommand` encapsulan acciones del usuario.             |
