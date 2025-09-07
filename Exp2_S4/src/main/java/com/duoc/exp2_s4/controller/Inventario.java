@@ -5,6 +5,8 @@
 package com.duoc.exp2_s4.controller;
 
 import com.duoc.exp2_s4.model.Producto;
+import com.duoc.exp2_s4.util.InventarioCsvManager;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,13 +15,41 @@ import java.util.Map;
  * Permite agregar, eliminar, buscar y listar productos.
  */
 public class Inventario {
-    private Map<String, Producto> productos;
+
+    private static Inventario instancia; // Instancia singleton
+    private final Map<String, Producto> productos; // Mapa para almacenar productos
 
     /**
      * Constructor que inicializa el inventario vacío.
      */
-    public Inventario() {
+    private Inventario() {
         productos = new HashMap<>();
+    }
+
+    /**
+     * Obtiene la instancia singleton del inventario.
+     *
+     * @return Instancia única de Inventario
+     */
+    public static Inventario getInstancia() {
+        if (instancia == null) {
+            instancia = new Inventario();
+        }
+        return instancia;
+    }
+
+    /**
+     * Guarda el inventario actual en un archivo CSV.
+     */
+    public void guardar() {
+        InventarioCsvManager.guardarInventario(this);
+    }
+
+    /**
+     * Carga el inventario desde un archivo CSV.
+     */
+    public void cargar() {
+        InventarioCsvManager.cargarInventario(this);
     }
 
     /**
@@ -29,9 +59,7 @@ public class Inventario {
      * @return true si se agregó correctamente, false si el código ya existe
      */
     public boolean agregarProducto(Producto producto) {
-        if (productos.containsKey(producto.getCodigo())) {
-            return false;
-        }
+        if (productos.containsKey(producto.getCodigo())) return false;
         productos.put(producto.getCodigo(), producto);
         return true;
     }
@@ -64,13 +92,11 @@ public class Inventario {
      */
     public Map<String, Producto> buscarPorTexto(String texto) {
         Map<String, Producto> resultados = new HashMap<>();
-        String textoNormalizado = texto.toLowerCase();
-
-        for (Map.Entry<String, Producto> entry : productos.entrySet()) {
-            Producto p = entry.getValue();
-            if (p.getNombre().toLowerCase().contains(textoNormalizado) ||
-                p.getDescripcion().toLowerCase().contains(textoNormalizado)) {
-                resultados.put(entry.getKey(), p);
+        String normalizado = texto.toLowerCase();
+        for (Producto p : productos.values()) {
+            if (p.getNombre().toLowerCase().contains(normalizado) ||
+                p.getDescripcion().toLowerCase().contains(normalizado)) {
+                resultados.put(p.getCodigo(), p);
             }
         }
         return resultados;
@@ -82,7 +108,7 @@ public class Inventario {
      * @return Mapa con todos los productos registrados
      */
     public Map<String, Producto> listarProductos() {
-        return new HashMap<>(productos); // Retorna una copia para evitar modificaciones externas
+        return new HashMap<>(productos);
     }
 
     /**
@@ -123,8 +149,6 @@ public class Inventario {
         }
         return false;
     }
-
-
 
     /**
      * Verifica si el inventario está vacío.
