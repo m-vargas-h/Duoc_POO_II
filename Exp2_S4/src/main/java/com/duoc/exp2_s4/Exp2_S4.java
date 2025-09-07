@@ -9,7 +9,7 @@ import com.duoc.exp2_s4.view.MenuPrincipal;
  */
 public class Exp2_S4 {
     public static void main(String[] args) {
-
+        
         Inventario inventario = Inventario.getInstancia(); // Obtener la instancia singleton del inventario
         inventario.cargar();
 

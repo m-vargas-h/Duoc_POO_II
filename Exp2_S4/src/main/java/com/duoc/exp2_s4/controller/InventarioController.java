@@ -20,16 +20,6 @@ public class InventarioController {
         this.inventario = inventario;
     }
 
-    /**
-     * Registra un nuevo producto en el inventario.
-     *
-     * @param codigo Código único del producto
-     * @param nombre Nombre del producto
-     * @param descripcion Descripción detallada del producto
-     * @param precio Precio unitario del producto
-     * @param cantidad Cantidad disponible en inventario
-     * @return true si se registró correctamente, false si el código ya existe
-     */
     public boolean registrarProducto(Producto productoDecorado) {
         return inventario.agregarProducto(productoDecorado);
     }
@@ -111,5 +101,9 @@ public class InventarioController {
      */
     public void cargarInventario() {
         inventario.cargar();
+    }
+    
+    public Inventario getInventario() {
+        return inventario;
     }
 }

@@ -2,6 +2,7 @@ package com.duoc.exp2_s4.command;
 
 import com.duoc.exp2_s4.controller.InventarioController;
 import com.duoc.exp2_s4.model.*;
+import com.duoc.exp2_s4.util.CodigoProductoGenerator;
 import com.duoc.exp2_s4.util.InputManager;
 
 public class ComandoAgregarProducto implements Command {
@@ -15,7 +16,8 @@ public class ComandoAgregarProducto implements Command {
 
     @Override
     public void ejecutar() {
-        String codigo = input.leerTexto("Código: ");
+        String codigo = CodigoProductoGenerator.generarCodigo(controller.getInventario());
+        System.out.println("Código asignado automáticamente: " + codigo);
         String nombre = input.leerTexto("Nombre: ");
         String descripcion = input.leerTexto("Descripción: ");
         double precio = input.leerDecimal("Precio: ");

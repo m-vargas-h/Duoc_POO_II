@@ -4,52 +4,66 @@ import com.duoc.exp2_s4.controller.Inventario;
 import com.duoc.exp2_s4.model.*;
 
 import java.io.*;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 /**
  * Clase encargada de guardar y cargar productos desde un archivo CSV.
  */
 public class InventarioCsvManager {
-    
-    private static final String RUTA_ARCHIVO = "inventario.csv";
+
+    private static final String FOLDER_PATH = "data";
+    private static final String FILE_PATH = "data/inventario.csv";
 
     public static void guardarInventario(Inventario inventario) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
-            for (Producto p : inventario.listarProductos().values()) {
-                String etiqueta = "SIN_ETIQUETA";
-                double descuento = 0.0;
-
-                if (p instanceof ProductoConEtiqueta etiquetaDecorada) {
-                    etiqueta = etiquetaDecorada.getEtiqueta();
-                    p = etiquetaDecorada.getProductoBase(); // para evitar duplicar decoradores
+        try {
+            File carpeta = new File(FOLDER_PATH);
+            if (!carpeta.exists()) {
+                boolean creada = carpeta.mkdirs();
+                if (!creada) {
+                    System.out.println("No se pudo crear la carpeta de datos.");
+                    return;
                 }
+            }
 
-                if (p instanceof ProductoConDescuento descuentoDecorado) {
-                    descuento = descuentoDecorado.getPorcentajeDescuento();
-                    p = descuentoDecorado.getProductoBase();
-                }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+                for (Producto p : inventario.listarProductos().values()) {
+                    String etiqueta = "SIN_ETIQUETA";
+                    double descuento = 0.0;
 
-                String linea = String.format("%s,%s,%s,%.2f,%d,%s,%.1f",
+                    if (p instanceof ProductoConEtiqueta etiquetaDecorada) {
+                        etiqueta = etiquetaDecorada.getEtiqueta();
+                        p = etiquetaDecorada.getProductoBase();
+                    }
+
+                    if (p instanceof ProductoConDescuento descuentoDecorada) {
+                        descuento = descuentoDecorada.getPorcentajeDescuento();
+                        p = descuentoDecorada.getProductoBase();
+                    }
+
+                    String linea = String.format(Locale.US, "%s,%s,%s,%.2f,%d,%s,%.1f",
                         p.getCodigo(), p.getNombre(), p.getDescripcion(),
                         p.getPrecio(), p.getCantidad(), etiqueta, descuento);
 
-                writer.write(linea);
-                writer.newLine();
+                    writer.write(linea);
+                    writer.newLine();
+                }
             }
-            System.out.println("Inventario guardado correctamente.");
+
+            System.out.println("Inventario guardado en: " + FILE_PATH);
         } catch (IOException e) {
             System.out.println("Error al guardar el inventario: " + e.getMessage());
         }
     }
 
     public static void cargarInventario(Inventario inventario) {
-        File archivo = new File(RUTA_ARCHIVO);
+        File archivo = new File(FILE_PATH);
         if (!archivo.exists()) {
-            System.out.println("Archivo de inventario no encontrado. Se iniciará con inventario vacío.");
+            System.out.println("Archivo de inventario no encontrado en: " + FILE_PATH);
             return;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 StringTokenizer st = new StringTokenizer(linea, ",");
@@ -75,7 +89,8 @@ public class InventarioCsvManager {
                     inventario.agregarProducto(producto);
                 }
             }
-            System.out.println("Inventario cargado correctamente.");
+
+            System.out.println("Inventario cargado desde: " + FILE_PATH);
         } catch (IOException | NumberFormatException e) {
             System.out.println("Error al cargar el inventario: " + e.getMessage());
         }
