@@ -5,6 +5,9 @@ import com.duoc.exp2_s4.model.*;
 import com.duoc.exp2_s4.util.CodigoProductoGenerator;
 import com.duoc.exp2_s4.util.InputManager;
 
+/**
+ * Comando para agregar un nuevo producto al inventario.
+ */
 public class ComandoAgregarProducto implements Command {
     private final InventarioController controller;
     private final InputManager input;

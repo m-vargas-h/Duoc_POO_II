@@ -4,10 +4,11 @@ package com.duoc.exp2_s4.model;
  * Enumeración de etiquetas disponibles para productos.
  */
 public enum EtiquetaProducto {
-    OFERTA_ESPECIAL,
-    NUEVO_INGRESO,
-    STOCK_LIMITADO,
-    LIQUIDACION,
+    BOOSTER_PACK,
+    BATTLE_DECK,
+    ELITE_TRAINER_BOX,
+    BLISTER,
+    PRODUCTO_ESPECIAL,
     SIN_ETIQUETA;
 
     public static void mostrarOpciones() {

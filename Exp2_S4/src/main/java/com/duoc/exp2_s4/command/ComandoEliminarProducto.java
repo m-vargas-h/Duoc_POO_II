@@ -3,6 +3,9 @@ package com.duoc.exp2_s4.command;
 import com.duoc.exp2_s4.controller.InventarioController;
 import com.duoc.exp2_s4.util.InputManager;
 
+/**
+ * Comando para agregar un nuevo producto al inventario.
+ */
 public class ComandoEliminarProducto implements Command {
     private final InventarioController controller;
     private final InputManager input;

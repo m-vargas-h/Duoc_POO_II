@@ -4,6 +4,9 @@ import com.duoc.exp2_s4.controller.InventarioController;
 import com.duoc.exp2_s4.model.Producto;
 import com.duoc.exp2_s4.util.InputManager;
 
+/**
+ * Comando para buscar un producto en el inventario por su código.
+ */
 public class ComandoBuscarProducto implements Command {
     private final InventarioController controller;
     private final InputManager input;

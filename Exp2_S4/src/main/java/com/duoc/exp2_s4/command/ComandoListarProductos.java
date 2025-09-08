@@ -1,7 +1,6 @@
 package com.duoc.exp2_s4.command;
 
 import com.duoc.exp2_s4.controller.InventarioController;
-import com.duoc.exp2_s4.model.Producto;
 
 /**
  * Comando que lista todos los productos disponibles en el inventario.

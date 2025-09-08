@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.duoc.exp2_s4.util;
 
 import com.duoc.exp2_s4.controller.Inventario;
 import com.duoc.exp2_s4.model.Producto;
-
-import java.util.Comparator;
 
 /**
  * Generador automático de códigos de producto con formato CHL00001.

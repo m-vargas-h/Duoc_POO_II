@@ -59,7 +59,13 @@ public class Inventario {
      * @return true si se agregó correctamente, false si el código ya existe
      */
     public boolean agregarProducto(Producto producto) {
-        if (productos.containsKey(producto.getCodigo())) return false;
+        if (producto == null) {
+            System.out.println("Advertencia: intento de agregar producto nulo.");
+            return false;
+        }
+        if (productos.containsKey(producto.getCodigo())) {
+            return false;
+        }
         productos.put(producto.getCodigo(), producto);
         return true;
     }
@@ -158,4 +164,9 @@ public class Inventario {
     public boolean estaVacio() {
         return productos.isEmpty();
     }
+    
+    public void limpiar() {
+        productos.clear();
+    }
+
 }
