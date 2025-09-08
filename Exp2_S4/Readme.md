@@ -37,12 +37,46 @@ Proyecto desarrollado en Java como parte del curso **Programación Orientada a O
 
 El sistema está organizado en paquetes:
 
-```com.duoc.exp2_s4/ 
-├── command/       → Acciones encapsuladas (Command Pattern) 
-├── controller/    → Lógica del inventario 
-├── model/         → Clases de dominio y decoradores 
-├── util/          → Utilidades como generador de códigos 
-├── view/          → Menú principal
+```
+Exp2_S4/
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/duoc/exp2_s4/
+│   │           ├── Exp2_S4.java
+│   │           ├── command/                            → Acciones encapsuladas (Command Pattern) 
+│   │           │   ├── ComandoActualizarProducto.java
+│   │           │   ├── ComandoAgregarProducto.java
+│   │           │   ├── ComandoBuscarPorTexto.java
+│   │           │   ├── ComandoEliminarProducto.java
+│   │           │   ├── ComandoListarProductos.java
+│   │           │   └── ComandoPrincipal.java
+│   │           ├── controller/                         → Lógica del inventario 
+│   │           │   └── Inventario.java
+│   │           ├── model/                              → Clases de dominio y decoradores 
+│   │           │   ├── InventarioController.java
+│   │           │   ├── EtiquetaProducto.java
+│   │           │   ├── Producto.java
+│   │           │   ├── ProductoConDescuento.java
+│   │           │   └── ProductoConIVA.java
+│   │           ├── util/                               → Utilidades como generador de códigos 
+│   │           │   ├── CodigoProductoGenerator.java
+│   │           │   └── InputManager.java
+│   │           └── view/
+│   │               └── MenuPrincipal.java              → Menú principal
+│
+│   └── test/
+│       └── java/
+│           └── com/duoc/exp2_s4/
+│               ├── controller/
+│               │   └── InventarioIntegracionTest.java
+│               └── model/
+│                   └── ProductoTest.java
+│
+├── data/
+│   └── inventario.csv
+├── pom.xml
+└── README.md
 ```
 
 ### Patrones aplicados
