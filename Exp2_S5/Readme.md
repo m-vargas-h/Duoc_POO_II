@@ -44,7 +44,7 @@ GestionInventario/
 │   │   └── java/
 │   │       └── com/duoc/GestionInventario/
 │   │           ├── GestionInventario.java
-│   │           ├── command/                            → Acciones encapsuladas (Command Pattern) 
+│   │           ├── command/                  
 │   │           │   ├── ComandoActualizarProducto.java
 │   │           │   ├── ComandoAgregarProducto.java
 │   │           │   ├── ComandoBuscarPorTexto.java
@@ -52,41 +52,62 @@ GestionInventario/
 │   │           │   ├── ComandoEliminarProducto.java
 │   │           │   ├── ComandoListarProducto.java
 │   │           │   └── Command.java
-│   │           ├── controller/                         → Lógica del inventario 
+│   │           ├── controller/           
 │   │           │   └── Inventario.java
 │   │           │   └── InventarioController.java
-│   │           ├── model/                              → Clases de dominio y decoradores 
+│   │           ├── model/                     
 │   │           │   ├── EtiquetaProducto.java
 │   │           │   ├── Producto.java
 │   │           │   ├── ProductoConDescuento.java
 │   │           │   ├── ProductoConEtiqueta.java
 │   │           │   └── ProductoDecorator.java
-│   │           ├── util/                               → Utilidades como generador de códigos 
+│   │           ├── util/                        
 │   │           │   ├── CodigoProductoGenerator.java
 │   │           │   ├── InputManager.java
 │   │           │   ├── InventarioCsvManager.java
 │   │           │   └── ProductoUtils.java
 │   │           └── view/
-│   │               └── MenuPrincipal.java              → Menú principal
-│
+│   │               └── MenuPrincipal.java  
+│   │
 │   └── test/
 │       └── java/
-│           └── com/duoc/exp2_s4/
+│           └── com/duoc/GestionInventario/
 │               ├── controller/
-│               │   └── InventarioIntegracionTest.java
+│               │   ├── InventarioIntegracionTest.java
+│               │   └── InventarioTest.java
 │               └── model/
-│                   └── ProductoTest.java
+│                   ├── ProductoDecoratorTest.java
+│                   ├── ProductoTest.java
+│                   └── ProductoUtilsTest.java
 │
 ├── data/
 │   └── inventario.csv
+├── docs/
 ├── pom.xml
 └── README.md
 ```
 
+- `model`: clases de dominio y decoradores
+- `controller`: lógica del inventario
+- `command`: acciones encapsuladas (Command Pattern)
+- `util`: utilidades como manejo de CSV y generación de códigos
+- `view`: menú principal (modo consola)
+
+### 📊 Diagrama UML del sistema
+
+- Diagrama general del sistema
+![Diagrama UML](docs/uml_diagrama.png)
+
+- Diagrama paquete command
+![Diagrama UML](docs/uml_package_command.png)
+
+- Diagrama paquete model
+![Diagrama UML](docs/uml_package_model.png)
+
 ### Patrones aplicados
-- Singleton (`Inventario`)
-- Decorator (`ProductoConEtiqueta`, `ProductoConDescuento`)
-- Command (`ComandoAgregarProducto`, etc.)
+- **Singleton**: `Inventario`
+- **Decorator**: `ProductoConEtiqueta`, `ProductoConDescuento`
+- **Command**: `ComandoAgregarProducto`, `ComandoEliminarProducto`, etc.
 
 ---
 
@@ -104,6 +125,9 @@ GestionInventario/
 ### Unitarias
 - `ProductoTest`: creación, modificación de atributos.
 - `InventarioTest`: agregar, eliminar, buscar, listar.
+- `ProductoDecoratorTest`: Valida la aplicación de decoradores como etiquetas y descuentos, asegurando que no se acumulen incorrectamente.
+- `ProductoUtilsTest`: Prueba métodos utilitarios como **actualizarProductoDecorado**, **generarCodigo**, y **limpiarDecoradores**, garantizando consistencia y robustez.
+
 
 ### Integración
 - `InventarioIntegracionTest`: flujo completo entre `Producto` e `Inventario`.
@@ -124,7 +148,7 @@ GestionInventario/
 ### Instrucciones
 1. Clonar o descomprimir el proyecto.
 2. Ejecutar `mvn clean install` para compilar y testear.
-3. Ejecutar `Exp2_S4.java` desde el IDE.
+3. Ejecutar `GestionInventario` desde el IDE.
 
 ---
 
@@ -141,12 +165,12 @@ Incluye descripción de clases, métodos y atributos.
 
 ### Mejoras aplicadas
 - Validación de entradas nulas.
-- Refactorización de métodos de búsqueda.
-- Corrección de formato en CSV.
+- Se agregaron pruebas para verificar funcionamiento de decoradores.
+- Refactorización comandos de modificación de productos.
+- Modificación de almacenamiento de datos, la carpeta data se saco del proyecto preparándose asi para una migración a base de datos
 
 ### Propuestas futuras
 - Interfaz gráfica con JavaFX.
-- Exportación a PDF o Excel.
 - Migración a base de datos con JDBC.
 - Refactorización hacia MVC completo.
 
@@ -154,7 +178,7 @@ Incluye descripción de clases, métodos y atributos.
 
 ## 📌 Autor
 
-**Miguel [Valdivia, Chile]**  
+**Miguel [Arica, Chile]**  
 Curso: Programación Orientada a Objetos II  
 Institución: Duoc UC  
 Año: 2025

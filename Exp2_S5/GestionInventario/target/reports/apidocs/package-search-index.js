@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.duoc.gestioninventario"},{"l":"com.duoc.gestioninventario.command"},{"l":"com.duoc.gestioninventario.controller"},{"l":"com.duoc.gestioninventario.model"},{"l":"com.duoc.gestioninventario.util"},{"l":"com.duoc.gestioninventario.view"}];updateSearchResults();

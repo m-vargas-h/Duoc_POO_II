@@ -105,7 +105,7 @@ public class Producto {
      * @return Cadena con todos los datos relevantes del producto
      */
     public String getDescripcionDetallada() {
-        return String.format("Código: %s | Nombre: %s | Precio: %.2f | Cantidad: %d | Descripción: %s",
+        return String.format("Codigo: %s | Nombre: %s | Precio: %.2f | Cantidad: %d | Descripcion: %s",
                 codigo, nombre, precio, cantidad, descripcion);
     }
 

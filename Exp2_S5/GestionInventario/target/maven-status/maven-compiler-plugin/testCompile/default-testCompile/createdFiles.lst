@@ -1,3 +1,5 @@
 controller\InventarioIntegracionTest.class
+model\ProductoUtilsTest.class
+model\ProductoTest.class
 controller\InventarioTest.class
-model\InventarioTest.class
+model\ProductoDecoratorTest.class

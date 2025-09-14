@@ -1,0 +1,63 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-classpath
+'C:/Users/mvarg/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21-win.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21-win.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21-win.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-fxml/21/javafx-fxml-21.jar;C:/Users/mvarg/.m2/repository/org/openjfx/javafx-fxml/21/javafx-fxml-21-win.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+21
+-sourcepath
+'H:/2025/code/Duoc/B3 - POO_II/Exp2_S5/GestionInventario/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'H:/2025/code/Duoc/B3 - POO_II/Exp2_S5/GestionInventario/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'GestionInventario 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'GestionInventario 1.0-SNAPSHOT API'
+com.duoc.gestioninventario.command
+com.duoc.gestioninventario.controller
+com.duoc.gestioninventario
+com.duoc.gestioninventario.model
+com.duoc.gestioninventario.util
+com.duoc.gestioninventario.view
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21.jar = 1757835503931
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21-win.jar = 1757835504697
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21.jar = 1757835504014
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21-win.jar = 1757835505430
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21.jar = 1757835504132
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21-win.jar = 1757835504516
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-fxml\21\javafx-fxml-21.jar = 1757835504099
+C:\Users\mvarg\.m2\repository\org\openjfx\javafx-fxml\21\javafx-fxml-21-win.jar = 1757835504391
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\src\main\java = 1757830589063
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\allclasses-index.html = 1757846756534
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\allpackages-index.html = 1757846756537
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\copy.svg = 1757846756590
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\element-list = 1757846756284
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\help-doc.html = 1757846756582
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\index-all.html = 1757846756572
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\index.html = 1757846756513
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\link.svg = 1757846756593
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\member-search-index.js = 1757846756548
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\module-search-index.js = 1757846756540
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\overview-summary.html = 1757846756577
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\overview-tree.html = 1757846756509
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\package-search-index.js = 1757846756542
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\script.js = 1757846756588
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\search-page.js = 1757846756603
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\search.html = 1757846756575
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\search.js = 1757846756597
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\stylesheet.css = 1757846756585
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\tag-search-index.js = 1757846756549
+H:\2025\code\Duoc\B3 - POO_II\Exp2_S5\GestionInventario\target\reports\apidocs\type-search-index.js = 1757846756545
