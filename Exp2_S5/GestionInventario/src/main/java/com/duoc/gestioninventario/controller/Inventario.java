@@ -1,0 +1,177 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.duoc.gestioninventario.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.duoc.gestioninventario.model.Producto;
+import com.duoc.gestioninventario.util.InventarioCsvManager;
+
+/**
+ *
+ * @author mvarg
+ */
+
+/**
+ * Clase encargada de gestionar el inventario de productos.
+ * Permite agregar, eliminar, buscar y listar productos.
+ */
+public class Inventario {
+
+    private static Inventario instancia; // Instancia singleton
+    private final Map<String, Producto> productos; // Mapa para almacenar productos
+
+    /**
+     * Constructor que inicializa el inventario vacío.
+     */
+    private Inventario() {
+        productos = new HashMap<>();
+    }
+
+    /**
+     * Obtiene la instancia singleton del inventario.
+     *
+     * @return Instancia única de Inventario
+     */
+    public static Inventario getInstancia() {
+        if (instancia == null) {
+            instancia = new Inventario();
+        }
+        return instancia;
+    }
+
+    /**
+     * Guarda el inventario actual en un archivo CSV.
+     */
+    public void guardar() {
+        InventarioCsvManager.guardarInventario(this);
+    }
+
+    /**
+     * Carga el inventario desde un archivo CSV.
+     */
+    public void cargar() {
+        InventarioCsvManager.cargarInventario(this);
+    }
+
+    /**
+     * Agrega un nuevo producto al inventario.
+     *
+     * @param producto Producto a agregar
+     * @return true si se agregó correctamente, false si el código ya existe
+     */
+    public boolean agregarProducto(Producto producto) {
+        if (producto == null) {
+            System.out.println("Advertencia: intento de agregar producto nulo.");
+            return false;
+        }
+        if (productos.containsKey(producto.getCodigo())) {
+            return false;
+        }
+        productos.put(producto.getCodigo(), producto);
+        return true;
+    }
+
+    /**
+     * Elimina un producto del inventario por su código.
+     *
+     * @param codigo Código del producto a eliminar
+     * @return true si se eliminó correctamente, false si no se encontró
+     */
+    public boolean eliminarProducto(String codigo) {
+        return productos.remove(codigo) != null;
+    }
+
+    /**
+     * Busca un producto por su código.
+     *
+     * @param codigo Código del producto
+     * @return Producto encontrado o null si no existe
+     */
+    public Producto buscarPorCodigo(String codigo) {
+        return productos.get(codigo);
+    }
+
+    /**
+     * Busca productos que contengan el texto especificado en su nombre o descripción.
+     *
+     * @param texto Texto a buscar
+     * @return Mapa con los productos que coinciden
+     */
+    public Map<String, Producto> buscarPorTexto(String texto) {
+        Map<String, Producto> resultados = new HashMap<>();
+        String normalizado = texto.toLowerCase();
+        for (Producto p : productos.values()) {
+            if (p.getNombre().toLowerCase().contains(normalizado) ||
+                p.getDescripcion().toLowerCase().contains(normalizado)) {
+                resultados.put(p.getCodigo(), p);
+            }
+        }
+        return resultados;
+    }
+
+    /**
+     * Lista todos los productos del inventario.
+     *
+     * @return Mapa con todos los productos registrados
+     */
+    public Map<String, Producto> listarProductos() {
+        return new HashMap<>(productos);
+    }
+
+    /**
+     * Actualiza la cantidad disponible de un producto.
+     *
+     * @param codigo Código del producto
+     * @param nuevaCantidad Nueva cantidad a establecer
+     * @return true si se actualizó correctamente, false si el producto no existe
+     */
+    public boolean actualizarCantidad(String codigo, int nuevaCantidad) {
+        Producto producto = productos.get(codigo);
+        if (producto != null) {
+            producto.setCantidad(nuevaCantidad);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Actualiza la información completa de un producto existente.
+     *
+     * @param codigo Código del producto a actualizar
+     * @param nuevoNombre Nuevo nombre del producto
+     * @param nuevaDescripcion Nueva descripción del producto
+     * @param nuevoPrecio Nuevo precio del producto
+     * @param nuevaCantidad Nueva cantidad disponible
+     * @return true si se actualizó correctamente, false si el producto no existe
+     */
+    public boolean actualizarProducto(String codigo, String nuevoNombre, String nuevaDescripcion,
+                                      double nuevoPrecio, int nuevaCantidad) {
+        Producto producto = productos.get(codigo);
+        if (producto != null) {
+            producto.setNombre(nuevoNombre);
+            producto.setDescripcion(nuevaDescripcion);
+            producto.setPrecio(nuevoPrecio);
+            producto.setCantidad(nuevaCantidad);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Verifica si el inventario está vacío.
+     *
+     * @return true si no hay productos registrados
+     */
+    public boolean estaVacio() {
+        return productos.isEmpty();
+    }
+    
+    public void limpiar() {
+        productos.clear();
+    }
+
+}
