@@ -27,7 +27,7 @@ public class ComandoListarProducto implements Command {
         if (productos.isEmpty()) {
             System.out.println("No hay productos registrados.");
         } else {
-            System.out.println("\n=== LISTADO DE PRODUCTOS ===");
+            System.out.println("\n----- LISTADO DE PRODUCTOS -----");
             productos.values().forEach(p -> System.out.println(p.getDescripcionDetallada()));
         }
     }

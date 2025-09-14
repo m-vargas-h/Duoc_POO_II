@@ -11,6 +11,7 @@ import com.duoc.gestioninventario.util.ProductoUtils;
 
 class ProductoUtilsTest {
 
+    
     @Test
     void testObtenerProductoBaseDesdeDecoradoresAnidados() {
         Producto base = new Producto("001", "Monitor", "LED 24\"", 150.0, 5);
